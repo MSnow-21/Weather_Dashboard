@@ -1,6 +1,5 @@
 // API Testing
 
-
 $("#search-button").on("click", function(event){
   event.preventDefault();
   
@@ -148,7 +147,6 @@ function seeForecast(cityName){
     // times with moment
 
     var time = moment().format("MM"+"/"+"D"+"/"+"YY")
-    console.log(time);
     var timeAddOne = moment().add(1, 'days').format("MM"+"/"+"D"+"/"+"YY");
     console.log(timeAddOne)
     var timeAddTwo = moment().add(2, 'days').format("MM"+"/"+"D"+"/"+"YY");
@@ -188,23 +186,24 @@ function seeForecast(cityName){
 
     for (var i=0; i<5; i++){
       var newCardDiv = $("<div>");
-      newCardDiv.attr({"class":"card col-md-2 forecast bg-primary text-white"},{"style":"width:7rem"});
+      newCardDiv.attr({"class":"card col-md-2 forecast bg-primary text-white"},{"style":"width:6rem"});
       addingDiv.append(newCardDiv);
       var newCardBody = $("<div>");
       newCardBody.attr("class", "card-body");
       newCardDiv.append(newCardBody);
-
-
-
-
-
-
+      //time
+      var timeH6 = $("<h6>");
+      timeH6.text(timeList[i]);
+      //images
+      var imageImg = $("<img>");
+      imageImg.attr("src", "http://openweathermap.org/img/wn/"+weatherIcon[i]+"@2x.png");
+      var tempH5 = $("<h6>");
+      tempH5.text("Temp: " + tempList[i]+" degrees F");
+      var humidityH5 = $("<h6>");
+      humidityH5.text("Humidity: "+ humidityList[i]+"%");
+      newCardBody.append(timeH6,imageImg,tempH5, humidityH5);
     }
-
-    
-
-
-
+  
   });
 
   
