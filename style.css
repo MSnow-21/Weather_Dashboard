@@ -4,3 +4,25 @@
     border-bottom-style:solid;
     padding: 5px;
 }
+
+
+.greenUV{
+    background-color: green;
+    color: white;
+}
+
+.yellowUV{
+    background-color: yellow;
+    color: white;
+}
+
+.orangeUV{
+    background-color: orange;
+    color: white;
+}
+
+.redUV{
+    background-color: red;
+    color: white;
+}
+

@@ -1,5 +1,6 @@
 // API Testing
 
+
 $("#search-button").on("click", function(event){
     event.preventDefault();
 
@@ -83,12 +84,24 @@ function searchWeather(cityName){
 
 
       uvToday = response.current.uvi
+      //uvToday = "7.9"; testing value
       console.log(uvToday);
-      //localStorage.setItem("uvItem", uvItem);
       windFirstDay = $(".windDayOne");
       uvTodayH5 = $("<h5>");
       uvTodayH5.text("UV Rating: "+uvToday);
       windFirstDay.append(uvTodayH5);
+
+      if(uvToday <="2"){
+        uvTodayH5.addClass("greenUV");
+      }else if(uvToday >="2.9" && uvToday < "6"){
+        uvTodayH5.addClass("yellowUV");
+      }else if(uvToday > "6.999" && uvToday < "8"){
+        uvTodayH5.addClass("orangeUV");
+      }else if(uvToday > "7.999" && uvToday < "9.999"){
+        uvTodayH5.addClass("redUV");
+      }
+
+
 
       
 
