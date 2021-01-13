@@ -1,5 +1,6 @@
 // API Testing
 
+
 $("#search-button").on("click", function(event){
     event.preventDefault();
 
@@ -32,6 +33,11 @@ function searchWeather(cityName){
       var humidity = response.main.humidity
       var windSpeed = response.wind.speed;
 
+      // Date
+      var m = moment().format("MM"+"/"+"D"+"/"+"YY")
+
+      // variable for icon image
+      var iconImage = response.weather[0].icon
 
       var nameH1 = $("<h1>")
       nameH1.text(name)
@@ -41,8 +47,16 @@ function searchWeather(cityName){
       humidityH3.text("Humidity: " + humidity +" %")
       var windspeedH3 = $("<h3>");
       windspeedH3.text("Windspeed: " + windSpeed + " mph")
+      //adding moment variable html
+      var timeM = $("<h7>");
+      timeM.text("("+m+")");
+      //creating image variable html
+      var imageOne = $("<img>");
+      imageOne.attr("src", "http://openweathermap.org/img/wn/"+iconImage+"@2x.png")
       displayToday.empty();
       displayToday.append(nameH1,tempH3,humidityH3,windspeedH3);
-  
+      nameH1.append(timeM);
+      timeM.append(imageOne);
+      
     });
 };
