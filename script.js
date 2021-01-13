@@ -8,3 +8,8 @@ $("#search-button").on("click", function(event){
   
   
 });
+
+
+//creating variables for existing html
+
+var displayToday = $("#today")
