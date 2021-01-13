@@ -14,7 +14,12 @@ $("#search-button").on("click", function(event){
 //creating variables for existing html
 
 var displayToday = $("#today")
+//adding styling to displayToday Div
+displayToday.attr("class", "displaytoday");
 
+
+
+// function for main weather display
 
 function searchWeather(cityName){
 
@@ -67,7 +72,6 @@ function searchWeather(cityName){
 
 
       // adding another query call to get the UV index information. need longitude and latitude from above
-
 
       var uvindexURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+latitude+"&lon="+longitude+"&exclude=hourly&units=imperial&appid=" + APIKey;
     
