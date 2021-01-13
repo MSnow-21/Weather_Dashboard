@@ -2,12 +2,15 @@
 
 
 $("#search-button").on("click", function(event){
-    event.preventDefault();
-
+  event.preventDefault();
   
-    var cityInput = $("#search-value").val();
-
-    searchWeather(cityInput);
+  var cityInput = $("#search-value").val();
+  
+  //function for calling main weather  
+  searchWeather(cityInput);
+  
+  // function for calling forecast  
+  seeForecast(cityInput);
   
 });
 
@@ -17,6 +20,8 @@ $("#search-button").on("click", function(event){
 var displayToday = $("#today")
 //adding styling to displayToday Div
 displayToday.attr("class", "displaytoday");
+
+var forecastDays = $("#forecast");
 
 
 
@@ -110,4 +115,73 @@ function searchWeather(cityName){
 
       
     });
+};
+
+
+// function to see the forecast
+
+function seeForecast(cityName){
+
+  var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&units=imperial&appid=" + APIKey ;
+
+  $.ajax({
+    url: forecastURL,
+    method: "GET"
+  }).then(function(response){
+    console.log(response)
+
+    // variables for temperatures
+
+    var temp1 = response.list[0].main.temp
+    console.log(temp1);
+    var temp2 = response.list[7].main.temp
+    var temp3 = response.list[15].main.temp
+    var temp4 = response.list[23].main.temp
+    var temp5 = response.list[31].main.temp
+    
+    var humidity1 = response.list[0].main.humidity
+    var humidity2 = response.list[7].main.humidity
+    var humidity3 = response.list[15].main.humidity
+    var humidity4 = response.list[23].main.humidity
+    var humidity5 = response.list[31].main.humidity
+
+    // times with moment
+
+    var time = moment().format("MM"+"/"+"D"+"/"+"YY")
+    console.log(time);
+    var timeAddOne = moment().add(1, 'days').format("MM"+"/"+"D"+"/"+"YY");
+    console.log(timeAddOne)
+    var timeAddTwo = moment().add(2, 'days').format("MM"+"/"+"D"+"/"+"YY");
+    var timeAddThree = moment().add(3, 'days').format("MM"+"/"+"D"+"/"+"YY");
+    var timeAddFour = moment().add(4, 'days').format("MM"+"/"+"D"+"/"+"YY");
+    var timeAddFive = moment().add(5, 'days').format("MM"+"/"+"D"+"/"+"YY");
+
+
+    // weather icons
+
+    var iconImage1 = response.list[0].weather[0].icon
+    console.log(iconImage1);
+    var iconImage2 = response.list[7].weather[0].icon
+    var iconImage3 = response.list[15].weather[0].icon
+    var iconImage4 = response.list[23].weather[0].icon
+    var iconImage5 = response.list[31].weather[0].icon
+
+    // Array of temperatures, humidities, times, and weather icons
+  
+    tempList = [temp1, temp2, temp3, temp4, temp5];
+
+    humidityList = [humidity1, humidity2, humidity3, humidity4, humidity5];
+
+    timeList = [timeAddOne,timeAddTwo,timeAddThree,timeAddFour,timeAddFive];
+
+    weatherIcon = [iconImage1,iconImage2,iconImage3,iconImage4,iconImage5];
+
+    
+
+
+
+  });
+
+  
+
 };
