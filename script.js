@@ -176,6 +176,31 @@ function seeForecast(cityName){
 
     weatherIcon = [iconImage1,iconImage2,iconImage3,iconImage4,iconImage5];
 
+    // creating html for 5 day forecast
+
+    var headingFive = $("<h2>");
+    headingFive.text("5-Day Forecast: ");
+    forecastDays.append(headingFive);
+
+    var addingDiv = $("<div>");
+    addingDiv.attr("class", "row");
+    headingFive.append(addingDiv);
+
+    for (var i=0; i<5; i++){
+      var newCardDiv = $("<div>");
+      newCardDiv.attr({"class":"card col-md-2 forecast bg-primary text-white"},{"style":"width:7rem"});
+      addingDiv.append(newCardDiv);
+      var newCardBody = $("<div>");
+      newCardBody.attr("class", "card-body");
+      newCardDiv.append(newCardBody);
+
+
+
+
+
+
+    }
+
     
 
 
